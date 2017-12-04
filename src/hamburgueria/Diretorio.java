@@ -6,36 +6,25 @@ import javax.swing.JOptionPane;
 
 public class Diretorio {
 
-    private File arquivo = new File("funcionamento.txt");
-    private FileWriter arquivoFuncionamento;
-    private FileWriter arquivoItem;
+    private File arquivo = new File("relatorio.txt");
+    private FileWriter arquivoRelatorio;
 
     public Diretorio() {
-        if (!arquivo.exists())
+        if (!arquivo.exists()) {
             try {
-                arquivoFuncionamento = new FileWriter("funcionamento.txt");    
-                arquivoItem = new FileWriter("item.txt");    
+                arquivoRelatorio = new FileWriter("relatorio.txt");
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao criar o diretorio");
             }
         }
-  
+    }
+
     public FileWriter getArquivoFuncionamento() {
-        return arquivoFuncionamento;
+        return arquivoRelatorio;
     }
 
-    public void setArquivoFuncionamento(FileWriter arquivoFuncionamento) {
-        this.arquivoFuncionamento = arquivoFuncionamento;
-    }
-    
-    public FileWriter getArquivoItem() {
-        return arquivoItem;
-    }
-
-    public void setArquivoItem(FileWriter arquivoItem) {
-        this.arquivoItem = arquivoItem;
+    public void setArquivoFuncionamento(FileWriter arquivoRelatorio) {
+        this.arquivoRelatorio = arquivoRelatorio;
     }
 
 }
-
-    

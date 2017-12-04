@@ -1,4 +1,0 @@
-Preto	Boi	Maionese	fanta			12.1		01:27:28.520			01:27:28.520
-Ciabatta	Frango	Maionese	Coca-Cola			17.4		01:28:20.532			01:28:20.532
-Ciabatta	Frango	Maionese	Coca-Cola			17.4		01:31:18.702			01:31:18.702
-Preto	Bife de Porco	Barbecue	Guaraná			15.4		01:39:50.645			01:39:50.644

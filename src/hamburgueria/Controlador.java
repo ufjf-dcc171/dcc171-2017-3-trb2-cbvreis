@@ -379,7 +379,7 @@ class Controlador extends JFrame {
                     try {
                         //StringBuilder resultado = new StringBuilder();
                         stgHoraFechamento = horaPedidoFechado.toString();
-                        fw = new FileWriter("funcionamento.txt", true);
+                        fw = new FileWriter("relatorio.txt", true);
                         BufferedWriter bw = new BufferedWriter(fw);
                         String stgTxtPao = "";
                         stgTxtPao = getTxtPao().getText();
