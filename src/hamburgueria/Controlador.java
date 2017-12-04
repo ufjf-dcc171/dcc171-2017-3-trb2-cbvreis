@@ -91,7 +91,7 @@ class Controlador extends JFrame {
     private double valorPedido = 0;
     private double valorTotalDia = 0;
 
-    public Controlador(List<Mesa> sampleData) {
+    public Controlador(List<Mesa> sampleData,FileWriter file) {
         super("Mesas");
         setMinimumSize(new Dimension(1200, 300));
         this.mesas = sampleData;
@@ -375,12 +375,12 @@ class Controlador extends JFrame {
                     return;
                 }
                 if (lstPedidos.getSelectedValue().isFlagFechamento()) {
-                    FileWriter fw = null;
+                    FileWriter file = null;
                     try {
                         //StringBuilder resultado = new StringBuilder();
                         stgHoraFechamento = horaPedidoFechado.toString();
-                        fw = new FileWriter("relatorio.txt", true);
-                        BufferedWriter bw = new BufferedWriter(fw);
+                        file = new FileWriter("relatorio.txt", true);
+                        BufferedWriter bw = new BufferedWriter(file);
                         String stgTxtPao = "";
                         stgTxtPao = getTxtPao().getText();
                         String stgtxtHora = "";
