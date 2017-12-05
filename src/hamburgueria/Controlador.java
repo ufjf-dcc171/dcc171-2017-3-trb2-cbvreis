@@ -389,9 +389,9 @@ class Controlador extends JFrame {
                         resultado.append(txtMolho.getText() + "\t");
                         resultado.append(txtRefrigerante.getText() + "\t" + "\t");
                         resultado.append(txtDescricao.getText() + "\t");
-                        resultado.append(txtValorTotal.getText() + "\t" + "\t");
+                        resultado.append("R$" + txtValorTotal.getText() + "\t" + "\t");
                         resultado.append(stgtxtHora + "\t" + "\t" + "\t");
-                        resultado.append(stgHoraFechamento + "\n");
+                        resultado.append(stgHoraFechamento + "\t"+ "\t"+ "\n");
                         bw.write(resultado.toString());
                         bw.flush();
                          lstPedidos.getSelectedValue().setFlagFechamento(false);
