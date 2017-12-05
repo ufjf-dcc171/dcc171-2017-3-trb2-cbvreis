@@ -7,22 +7,27 @@
 	CURSO: SISTEMAS DE INFORMAÇÃO.
 
 
-<h4>Trabalho 2</h4>
+<h3>Trabalho 2</h3>
 <h4>Texto explicando o protocolo de persistência desenvolvido;</h4>
 Protocolo definido melhorou a eficiência do relatório. Através da manipulação do TXT os dados não são perdidos, transformando-o em um pequeno banco de dados. Outro caracter importante após a implementação é a possibilidade de modificar e validar o relatório.
-O protocolo adotado inclui: 
-	- Escrita no arquivo do pedido após o fechamento;
-	- Leitura do arquivo na emissão de relatorios;
-	- Gravação do arquivo após realizar modificações.
-	
-Dessa forma foi abordado os conteúdos de manipulação em documentos de texto
+	O protocolo adotado inclui: 
+		- Escrita no arquivo do pedido após o fechamento;
+		- Leitura do arquivo na emissão de relatorios;
+		- Gravação do arquivo após realizar modificações.
+	Dessa forma foi abordado os conteúdos de manipulação em documentos de texto
 
-<hr>
-
-<h4>Pontos onde podem ser realizadas melhorias futuras.</4>
+<h4>Pontos onde podem ser realizadas melhorias futuras.</h4>
 	- Criação de um banco de dados relacionais
 	- Criação de uma jtable para inserir o relatorio.
 	- Gerencia dos pedidos em um txt.
+	
+<h4> Discussão dos pontos que apresentaram maior dificuldade de implementação;</h4>
+
+	Maior dificuldade na implementação foi a modelagem a ser utilizada.
+	A manipulação do txt entre classes.
+	Integrar o Txt ao meu projeto
+
+<hr>	
 
 <h4>2. Texto explicando o cenário para o qual o sistema foi desenvolvido;</h4>
 
@@ -96,3 +101,4 @@ Dessa forma foi abordado os conteúdos de manipulação em documentos de texto
 
 
 ufjf-dcc171-2017-3-trb1-cbvreis created by GitHub Classroom
+
