@@ -17,9 +17,9 @@ Protocolo definido melhorou a eficiência do relatório. Através da manipulaç�
 	Dessa forma foi abordado os conteúdos de manipulação em documentos de texto
 
 <h4>Pontos onde podem ser realizadas melhorias futuras.</h4>
-	- Criação de um banco de dados relacionais
-	- Criação de uma jtable para inserir o relatorio.
-	- Gerencia dos pedidos em um txt.
+	Criação de um banco de dados relacionais
+	Criação de uma jtable para inserir o relatorio.
+	Gerencia dos pedidos em um txt.
 	
 <h4> Discussão dos pontos que apresentaram maior dificuldade de implementação;</h4>
 
