@@ -49,8 +49,7 @@ class Controlador extends JFrame {
     private JTextField txtMolho = new JTextField();
     private JTextField txtDescricao = new JTextField();
     private JTextField txtValorTotal = new JTextField();
-    private Diretorio bancoDeDadosTxt;
-    
+   
     private final JList<Mesa> lstMesas = new JList<>(new DefaultListModel<>());
     private final JList<Pedido> lstPedidos = new JList<>(new DefaultListModel<>());
     private final JButton btnCriaMesa = new JButton("Cria mesa");
@@ -80,7 +79,7 @@ class Controlador extends JFrame {
     private ButtonGroup handlerMolho = new ButtonGroup();
 
     private final JPanel resumoPedido = new JPanel(new GridLayout(5, 4));
-    private StringBuilder resultado = new StringBuilder();
+   
     private String stgRelatorio;
     private String stgHoraAbertura;
     private String stgHoraFechamento;
@@ -377,7 +376,7 @@ class Controlador extends JFrame {
                 if (lstPedidos.getSelectedValue().isFlagFechamento()) {
                     FileWriter file = null;
                     try {
-                        //StringBuilder resultado = new StringBuilder();
+                        StringBuilder resultado = new StringBuilder();
                         stgHoraFechamento = horaPedidoFechado.toString();
                         file = new FileWriter("relatorio.txt", true);
                         BufferedWriter bw = new BufferedWriter(file);
@@ -395,11 +394,7 @@ class Controlador extends JFrame {
                         resultado.append(stgHoraFechamento + "\n");
                         bw.write(resultado.toString());
                         bw.flush();
-                //        bw.close();
-//                        bancoDeDadosTxt.setArquivoFuncionamento(fw);
-  //                      relatorio.add(resultado.toString());
-    //                    stgRelatorio = getStringRelatorio();
-                        lstPedidos.getSelectedValue().setFlagFechamento(false);
+                         lstPedidos.getSelectedValue().setFlagFechamento(false);
                         valorPedido = 0;
                         btnCriaMesa.setEnabled(true);
                         btnExcluiMesa.setEnabled(true);

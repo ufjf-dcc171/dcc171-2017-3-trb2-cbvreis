@@ -13,4 +13,4 @@ Preto	Boi	Maionese	Coca-Cola			14.4		21:42:20.865			21:42:20.865
 Ciabatta	Boi	Catshup	Coca-Cola		teste	14.0		21:42:20.865			21:42:20.865
 Ciabatta	Frango	Maionese	fanta		teste	15.1		21:42:20.865			21:42:20.865
 Preto	Bife de Porco	Maionese	Coca-Cola		teste	17.4		21:42:20.865			21:42:20.865		OK
-
+Preto	Bife de Porco	Catshup	fanta			13.7		00:07:45.888			00:07:45.887		OK
