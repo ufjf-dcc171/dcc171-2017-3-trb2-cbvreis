@@ -7,6 +7,22 @@
 	CURSO: SISTEMAS DE INFORMAÇÃO.
 
 
+<h4>Trabalho 2</h4>
+<h4>Texto explicando o protocolo de persistência desenvolvido;</h4>
+Protocolo definido melhorou a eficiência do relatório. Através da manipulação do TXT os dados não são perdidos, transformando-o em um pequeno banco de dados. Outro caracter importante após a implementação é a possibilidade de modificar e validar o relatório.
+O protocolo adotado inclui: 
+	- Escrita no arquivo do pedido após o fechamento;
+	- Leitura do arquivo na emissão de relatorios;
+	- Gravação do arquivo após realizar modificações.
+	
+Dessa forma foi abordado os conteúdos de manipulação em documentos de texto
+
+<hr>
+
+<h4>Pontos onde podem ser realizadas melhorias futuras.</4>
+	- Criação de um banco de dados relacionais
+	- Criação de uma jtable para inserir o relatorio.
+	- Gerencia dos pedidos em um txt.
 
 <h4>2. Texto explicando o cenário para o qual o sistema foi desenvolvido;</h4>
 
@@ -32,7 +48,7 @@
 
 
 <h4>3. Modelo de dados utilizado;</h4>
-#Fazer
+
 <h4>4. Levantamento dos campos necessários para a construção das telas;</h4>
 
 	O sistema possui uma janela principal que é responsável pelo controle de pedidos.
