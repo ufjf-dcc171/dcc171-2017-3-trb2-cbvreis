@@ -1,31 +1,74 @@
 package hamburgueria;
 
-import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFrame;
 
-public class Hamburgueria {
+class Hamburgueria {
 
-    public static void main(String[] args) {
-        Controlador janela = new Controlador(getSamplaDate(),getDiretorio());
-        janela.setSize(700, 300);
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        janela.setLocationRelativeTo(null);
-        janela.setVisible(true);
+        private ArrayList<Mesa> mesas = new ArrayList<>();
+        private Diretorio dir;
+ //       private MesaDAO mesasDAO = new MesaDAO();
+ //       private ItemDAO itemDAO = new ItemDAO();
+ //       private PedidoDAO pedidoDAO = new PedidoDAO();
+        private Integer contadorDeMesa;
+        private Integer contadorDePedidos = 0;
+
+        public Hamburgueria() throws IOException {
+            dir = new Diretorio();
+            lerDados();
+         /*
+            Essa classe sera responsavel por ler o txt e recriar o cenario.
+            
+            */
+
+        }
+
+        public List<Mesa> getMesa() {
+            return mesas;
+        }
+
+        public void setMesa(ArrayList<Mesa> mesas) {
+            this.mesas = mesas;
+        }
+
+        public Diretorio getDir() {
+            return dir;
+        }
+
+        public void setDir(Diretorio dir) {
+            this.dir = dir;
+        }
+
+     
+        public Integer getContadorDeMesa() {
+            return contadorDeMesa;
+        }
+
+        public void setContadorDeMesa(Integer contadorDeMesa) {
+            this.contadorDeMesa = contadorDeMesa;
+        }
+
+        public void maisMesa() {
+            this.contadorDeMesa = this.contadorDeMesa + 1;
+        }
+
+        public Integer getContadorDePedidos() {
+            return contadorDePedidos;
+        }
+
+        public void setContadorDePedidos(Integer contadorDePedidos) {
+            this.contadorDePedidos = contadorDePedidos;
+        }
+
+        public void aumentarContadorDePedidos() {
+            this.contadorDePedidos = this.contadorDePedidos + 1;
+        }
+
+    private void lerDados() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     }
 
-    private static List<Mesa> getSamplaDate() {
 
-        Mesa m1 = new Mesa(0);
-
-        List<Mesa> lstMesas = new ArrayList<>();
-        lstMesas.add(m1);
-        return lstMesas;
-    }
-       private static FileWriter getDiretorio() {
-
-        Diretorio controleRelatorio = new Diretorio();
-        return  controleRelatorio.getArquivoFuncionamento();
-    }
-}

@@ -90,7 +90,7 @@ class Controlador extends JFrame {
     private double valorPedido = 0;
     private double valorTotalDia = 0;
 
-    public Controlador(List<Mesa> sampleData, FileWriter file) {
+    public Controlador(List<Mesa> sampleData) {
         super("Mesas");
         setMinimumSize(new Dimension(1200, 300));
         this.mesas = sampleData;
