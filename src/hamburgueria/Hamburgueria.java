@@ -20,11 +20,7 @@ class Hamburgueria {
     public Hamburgueria() throws IOException {
         dir = new Diretorio();
         lerDados();
-        /*
-            Essa classe sera responsavel por ler o txt e recriar o cenario.
-            
-         */
-
+        
     }
 
     public List<Mesa> getMesa() {
@@ -71,14 +67,17 @@ class Hamburgueria {
         try {
             FileReader arq = null;
             String linha;
-            arq = new FileReader("relatorio.txt");
+            arq = new FileReader("fileData.txt");
             BufferedReader br = new BufferedReader(arq);
             StringBuilder sb = new StringBuilder();
 
             while ((linha = br.readLine()) != null) {
-                String mesa = linha.split("|")[0];
+                String mesa = linha.split("|")[1];
                 String[] items = linha.split("|")[1].split(";");
+                
+                System.out.println(mesa);
             }
+            
         } catch (IOException ex) {
             Logger.getLogger(Hamburgueria.class.getName()).log(Level.SEVERE, null, ex);
         }
