@@ -1,1 +1,4 @@
 Ciabatta	Frango	Maionese	Coca-Cola			R$17.4		00:12:52.818			00:12:52.818		
+Ciabatta	Frango	Maionese	Coca-Cola			R$17.4		00:28:23.228			00:28:23.228		
+Ciabatta	Frango	Maionese	Coca-Cola			R$17.4		00:37:46.735			00:37:46.735		
+Pão Caseiro	Frango	Maionese	Coca-Cola			R$15.4		00:37:46.735			00:37:46.735		

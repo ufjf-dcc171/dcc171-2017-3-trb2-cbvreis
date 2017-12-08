@@ -33,7 +33,7 @@ class Controlador extends JFrame {
 
     static int numMesas = 1;
     private int numPedidos = 1;
-	
+
     private final List<Mesa> mesas;
     private final JLabel lblPao = new JLabel("Pão");
     private final JLabel lblBife = new JLabel("Bife");
@@ -49,7 +49,7 @@ class Controlador extends JFrame {
     private JTextField txtMolho = new JTextField();
     private JTextField txtDescricao = new JTextField();
     private JTextField txtValorTotal = new JTextField();
-   
+
     private final JList<Mesa> lstMesas = new JList<>(new DefaultListModel<>());
     private final JList<Pedido> lstPedidos = new JList<>(new DefaultListModel<>());
     private final JButton btnCriaMesa = new JButton("Cria mesa");
@@ -79,7 +79,7 @@ class Controlador extends JFrame {
     private ButtonGroup handlerMolho = new ButtonGroup();
 
     private final JPanel resumoPedido = new JPanel(new GridLayout(5, 4));
-   
+
     private String stgRelatorio;
     private String stgHoraAbertura;
     private String stgHoraFechamento;
@@ -90,7 +90,7 @@ class Controlador extends JFrame {
     private double valorPedido = 0;
     private double valorTotalDia = 0;
 
-    public Controlador(List<Mesa> sampleData,FileWriter file) {
+    public Controlador(List<Mesa> sampleData, FileWriter file) {
         super("Mesas");
         setMinimumSize(new Dimension(1200, 300));
         this.mesas = sampleData;
@@ -201,70 +201,78 @@ class Controlador extends JFrame {
         btnCalcular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if (jPaoCiabatta.isSelected()) {
-                    getTxtPao().setText("Ciabatta");
-                    valorPedido = valorPedido + 3.5;
-
-                    btnCalcular.setEnabled(true);
-                } else if (jPaoCaseiro.isSelected()) {
-                    getTxtPao().setText("Pão Caseiro");
-                    valorPedido = valorPedido + 1.5;
-                    for (Component cp : botoes.getComponents()) {
-                        cp.setEnabled(false);
+                try {
+                    if (jPaoCiabatta.isSelected()) {
+                        getTxtPao().setText("Ciabatta");
+                        valorPedido = valorPedido + 3.5;
+                        
+                        btnCalcular.setEnabled(true);
+                    } else if (jPaoCaseiro.isSelected()) {
+                        getTxtPao().setText("Pão Caseiro");
+                        valorPedido = valorPedido + 1.5;
+                        for (Component cp : botoes.getComponents()) {
+                            cp.setEnabled(false);
+                        }
+                        btnCalcular.setEnabled(true);
+                    } else {
+                        getTxtPao().setText("Preto");
+                        valorPedido = valorPedido + 2.5;
+                        for (Component cp : botoes.getComponents()) {
+                            cp.setEnabled(false);
+                        }
+                        btnCalcular.setEnabled(true);
                     }
-                    btnCalcular.setEnabled(true);
-                } else {
-                    getTxtPao().setText("Preto");
-                    valorPedido = valorPedido + 2.5;
-                    for (Component cp : botoes.getComponents()) {
-                        cp.setEnabled(false);
+                    if (jBifeFrango.isSelected()) {
+                        txtBife.setText("Frango");
+                        valorPedido = valorPedido + 3.5;
+                    } else if (jBifeBoi.isSelected()) {
+                        txtBife.setText("Boi");
+                        valorPedido = valorPedido + 1.5;
+                    } else {
+                        txtBife.setText("Bife de Porco");
+                        valorPedido = valorPedido + 4.5;
                     }
-                    btnCalcular.setEnabled(true);
+                    if (jBarbecue.isSelected()) {
+                        txtMolho.setText("Barbecue");
+                        valorPedido = valorPedido + 1.65;
+                    } else if (jCatshup.isSelected()) {
+                        txtMolho.setText("Catshup");
+                        valorPedido = valorPedido + 1.35;
+                    } else {
+                        txtMolho.setText("Maionese");
+                        valorPedido = valorPedido + 2.75;
+                    }
+                    if (jCoca.isSelected()) {
+                        txtRefrigerante.setText("Coca-Cola");
+                        valorPedido = valorPedido + 7.65;
+                    } else if (jFanta.isSelected()) {
+                        txtRefrigerante.setText("fanta");
+                        valorPedido = valorPedido + 5.35;
+                    } else {
+                        txtRefrigerante.setText("Guaraná");
+                        valorPedido = valorPedido + 6.75;
+                    }
+                    txtValorTotal.setText(String.valueOf(valorPedido));
+                    System.out.println(getTxtPao().getText());
+                    handlerPao.clearSelection();
+                    handlerBebida.clearSelection();
+                    handlerBife.clearSelection();
+                    handlerMolho.clearSelection();
+                    setValorTotalDia(getValorTotalDia() + valorPedido);
+                    btnCriaMesa.setEnabled(false);
+                    btnExcluiMesa.setEnabled(false);
+                    btnCriaPedido.setEnabled(false);
+                    btnFechaPedido.setEnabled(true);
+                    btnGerarRelatorio.setEnabled(true);
+                    btnCalcular.setEnabled(false);
+                    salvarDados();
+                    
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if (jBifeFrango.isSelected()) {
-                    txtBife.setText("Frango");
-                    valorPedido = valorPedido + 3.5;
-                } else if (jBifeBoi.isSelected()) {
-                    txtBife.setText("Boi");
-                    valorPedido = valorPedido + 1.5;
-                } else {
-                    txtBife.setText("Bife de Porco");
-                    valorPedido = valorPedido + 4.5;
-                }
-                if (jBarbecue.isSelected()) {
-                    txtMolho.setText("Barbecue");
-                    valorPedido = valorPedido + 1.65;
-                } else if (jCatshup.isSelected()) {
-                    txtMolho.setText("Catshup");
-                    valorPedido = valorPedido + 1.35;
-                } else {
-                    txtMolho.setText("Maionese");
-                    valorPedido = valorPedido + 2.75;
-                }
-                if (jCoca.isSelected()) {
-                    txtRefrigerante.setText("Coca-Cola");
-                    valorPedido = valorPedido + 7.65;
-                } else if (jFanta.isSelected()) {
-                    txtRefrigerante.setText("fanta");
-                    valorPedido = valorPedido + 5.35;
-                } else {
-                    txtRefrigerante.setText("Guaraná");
-                    valorPedido = valorPedido + 6.75;
-                }
-
-                txtValorTotal.setText(String.valueOf(valorPedido));
-                System.out.println(getTxtPao().getText());
-                handlerPao.clearSelection();
-                handlerBebida.clearSelection();
-                handlerBife.clearSelection();
-                handlerMolho.clearSelection();
-                setValorTotalDia(getValorTotalDia() + valorPedido);
-                btnCriaMesa.setEnabled(false);
-                btnExcluiMesa.setEnabled(false);
-                btnCriaPedido.setEnabled(false);
-                btnFechaPedido.setEnabled(true);
-                btnGerarRelatorio.setEnabled(true);
-                btnCalcular.setEnabled(false);
+                
+                
             }
 
         });
@@ -355,14 +363,12 @@ class Controlador extends JFrame {
                 }
                 txtDescricao.setText("");
                 txtValorTotal.setText("");
-
                 Pedido p = new Pedido(numPedidos);
                 lstMesas.getSelectedValue().getPedidos().add(p);
                 lstPedidos.updateUI();
                 lstMesas.updateUI();
                 numPedidos++;
                 setStgHoraAbertura((horaPedidoAberto.toString()));
-
             }
         });
 
@@ -391,10 +397,10 @@ class Controlador extends JFrame {
                         resultado.append(txtDescricao.getText() + "\t");
                         resultado.append("R$" + txtValorTotal.getText() + "\t" + "\t");
                         resultado.append(stgtxtHora + "\t" + "\t" + "\t");
-                        resultado.append(stgHoraFechamento + "\t"+ "\t"+ "\n");
+                        resultado.append(stgHoraFechamento + "\t" + "\t" + "\n");
                         bw.write(resultado.toString());
                         bw.flush();
-                         lstPedidos.getSelectedValue().setFlagFechamento(false);
+                        lstPedidos.getSelectedValue().setFlagFechamento(false);
                         valorPedido = 0;
                         btnCriaMesa.setEnabled(true);
                         btnExcluiMesa.setEnabled(true);
@@ -402,6 +408,8 @@ class Controlador extends JFrame {
                         btnGerarRelatorio.setEnabled(true);
                         btnCalcular.setEnabled(true);
                         lstPedidos.updateUI();
+                        salvarDados();
+                         
                     } catch (IOException ex) {
                         Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                     } finally {
@@ -473,4 +481,24 @@ class Controlador extends JFrame {
         this.stgHoraFechamento = stgHoraFechamento;
     }
 
+    public void salvarDados() throws IOException {
+        FileWriter file = null;
+        String content = "";
+        Mesa m = new Mesa();
+        for (int i = 0; i < lstMesas.getModel().getSize(); i++) {
+            content += lstMesas.getModel().getElementAt(i).toString() + '|';
+            System.out.println(lstMesas.getModel().getElementAt(i).getPedidos());
+           for (Pedido p : lstMesas.getModel().getElementAt(i).getPedidos()) {
+                content += p.getDataFechamento() + ';' + p.getNumPedido() + ";" + p.getValorFinal() + ";" + p.isFlagFechamento() + ":" + "\n";
+            }
+             
+        }
+        StringBuilder resultado = new StringBuilder();
+        stgHoraFechamento = horaPedidoFechado.toString();
+        file = new FileWriter("fileData.txt", false);
+        BufferedWriter bw = new BufferedWriter(file);
+        resultado.append(content);
+        bw.write(resultado.toString());
+        bw.flush();
+    }
 }

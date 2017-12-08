@@ -7,12 +7,15 @@ import java.util.List;
 
 
 public class Mesa {
-    private int codMesa = 1; 
+    int codMesa = 1; 
     private List<Pedido> pedidos; 
     
     public Mesa(Integer i) {
         this.codMesa = i;
         this.pedidos = new ArrayList<>();
+    }
+
+    Mesa() {
     }
 
     public int getNumMesa() {
