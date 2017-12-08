@@ -7,68 +7,62 @@ import java.util.List;
 
 class Hamburgueria {
 
-        private ArrayList<Mesa> mesas = new ArrayList<>();
-        private Diretorio dir;
- //       private MesaDAO mesasDAO = new MesaDAO();
- //       private ItemDAO itemDAO = new ItemDAO();
- //       private PedidoDAO pedidoDAO = new PedidoDAO();
-        private Integer contadorDeMesa;
-        private Integer contadorDePedidos = 0;
+    private ArrayList<Mesa> mesas = new ArrayList<>();
+    private Diretorio dir;
+    private Integer contadorDeMesa;
+    private Integer contadorDePedidos = 0;
 
-        public Hamburgueria() throws IOException {
-            dir = new Diretorio();
-            lerDados();
-         /*
+    public Hamburgueria() throws IOException {
+        dir = new Diretorio();
+        lerDados();
+        /*
             Essa classe sera responsavel por ler o txt e recriar o cenario.
             
-            */
+         */
 
-        }
+    }
 
-        public List<Mesa> getMesa() {
-            return mesas;
-        }
+    public List<Mesa> getMesa() {
+        return mesas;
+    }
 
-        public void setMesa(ArrayList<Mesa> mesas) {
-            this.mesas = mesas;
-        }
+    public void setMesa(ArrayList<Mesa> mesas) {
+        this.mesas = mesas;
+    }
 
-        public Diretorio getDir() {
-            return dir;
-        }
+    public Diretorio getDir() {
+        return dir;
+    }
 
-        public void setDir(Diretorio dir) {
-            this.dir = dir;
-        }
+    public void setDir(Diretorio dir) {
+        this.dir = dir;
+    }
 
-     
-        public Integer getContadorDeMesa() {
-            return contadorDeMesa;
-        }
+    public Integer getContadorDeMesa() {
+        return contadorDeMesa;
+    }
 
-        public void setContadorDeMesa(Integer contadorDeMesa) {
-            this.contadorDeMesa = contadorDeMesa;
-        }
+    public void setContadorDeMesa(Integer contadorDeMesa) {
+        this.contadorDeMesa = contadorDeMesa;
+    }
 
-        public void maisMesa() {
-            this.contadorDeMesa = this.contadorDeMesa + 1;
-        }
+    public void maisMesa() {
+        this.contadorDeMesa = this.contadorDeMesa + 1;
+    }
 
-        public Integer getContadorDePedidos() {
-            return contadorDePedidos;
-        }
+    public Integer getContadorDePedidos() {
+        return contadorDePedidos;
+    }
 
-        public void setContadorDePedidos(Integer contadorDePedidos) {
-            this.contadorDePedidos = contadorDePedidos;
-        }
+    public void setContadorDePedidos(Integer contadorDePedidos) {
+        this.contadorDePedidos = contadorDePedidos;
+    }
 
-        public void aumentarContadorDePedidos() {
-            this.contadorDePedidos = this.contadorDePedidos + 1;
-        }
+    public void aumentarContadorDePedidos() {
+        this.contadorDePedidos = this.contadorDePedidos + 1;
+    }
 
     private void lerDados() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
-    }
-
-
+}

@@ -17,10 +17,10 @@ public class MainHamburgueria {
     }
 
     private static List<Mesa> getSamplaDate() throws IOException {
-    
+
         Hamburgueria hamburgueria = new Hamburgueria();
 
         return hamburgueria.getMesa();
     }
-     
+
 }

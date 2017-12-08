@@ -205,7 +205,7 @@ class Controlador extends JFrame {
                     if (jPaoCiabatta.isSelected()) {
                         getTxtPao().setText("Ciabatta");
                         valorPedido = valorPedido + 3.5;
-                        
+
                         btnCalcular.setEnabled(true);
                     } else if (jPaoCaseiro.isSelected()) {
                         getTxtPao().setText("Pão Caseiro");
@@ -266,13 +266,11 @@ class Controlador extends JFrame {
                     btnGerarRelatorio.setEnabled(true);
                     btnCalcular.setEnabled(false);
                     salvarDados();
-                    
-                    
+
                 } catch (IOException ex) {
                     Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                
+
             }
 
         });
@@ -324,13 +322,18 @@ class Controlador extends JFrame {
         btnCriaMesa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                txtDescricao.setText("");
-                txtValorTotal.setText("");
-
-                Mesa t = new Mesa(numMesas);
-                mesas.add(t);
-                lstMesas.updateUI();
-                numMesas++;
+                try {
+                    txtDescricao.setText("");
+                    txtValorTotal.setText("");
+                    
+                    Mesa t = new Mesa(numMesas);
+                    mesas.add(t);
+                    lstMesas.updateUI();
+                    numMesas++;
+                    salvarDados();
+                } catch (IOException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             }
         });
@@ -339,36 +342,46 @@ class Controlador extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (lstMesas.isSelectionEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Selecione uma mesa", "ERRO!", JOptionPane.ERROR_MESSAGE);
-                }
-
-                for (Pedido p : lstMesas.getSelectedValue().getPedidos()) {
-                    if (p.isFlagFechamento() == true) {
-                        JOptionPane.showMessageDialog(null, "Feche os pedidos abertos", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                try {
+                    if (lstMesas.isSelectionEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Selecione uma mesa", "ERRO!", JOptionPane.ERROR_MESSAGE);
                     }
-                    return;
+
+                    for (Pedido p : lstMesas.getSelectedValue().getPedidos()) {
+                        if (p.isFlagFechamento() == true) {
+                            JOptionPane.showMessageDialog(null, "Feche os pedidos abertos", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                        }
+                        return;
+                    }
+                    mesas.remove(lstMesas.getSelectedValue());
+                    lstMesas.clearSelection();
+                    lstMesas.updateUI();
+                    salvarDados();
+                } catch (IOException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                mesas.remove(lstMesas.getSelectedValue());
-                lstMesas.clearSelection();
-                lstMesas.updateUI();
             }
         });
 
         btnCriaPedido.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (lstMesas.isSelectionEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Você deveria ter selecionado uma mesa", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                try {
+                    if (lstMesas.isSelectionEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Você deveria ter selecionado uma mesa", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                    }
+                    txtDescricao.setText("");
+                    txtValorTotal.setText("");
+                    Pedido p = new Pedido(numPedidos);
+                    lstMesas.getSelectedValue().getPedidos().add(p);
+                    lstPedidos.updateUI();
+                    lstMesas.updateUI();
+                    numPedidos++;
+                    setStgHoraAbertura((horaPedidoAberto.toString()));
+                    salvarDados();
+                } catch (IOException ex) {
+                    Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                txtDescricao.setText("");
-                txtValorTotal.setText("");
-                Pedido p = new Pedido(numPedidos);
-                lstMesas.getSelectedValue().getPedidos().add(p);
-                lstPedidos.updateUI();
-                lstMesas.updateUI();
-                numPedidos++;
-                setStgHoraAbertura((horaPedidoAberto.toString()));
             }
         });
 
@@ -409,7 +422,7 @@ class Controlador extends JFrame {
                         btnCalcular.setEnabled(true);
                         lstPedidos.updateUI();
                         salvarDados();
-                         
+
                     } catch (IOException ex) {
                         Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
                     } finally {
@@ -488,10 +501,10 @@ class Controlador extends JFrame {
         for (int i = 0; i < lstMesas.getModel().getSize(); i++) {
             content += lstMesas.getModel().getElementAt(i).toString() + '|';
             System.out.println(lstMesas.getModel().getElementAt(i).getPedidos());
-           for (Pedido p : lstMesas.getModel().getElementAt(i).getPedidos()) {
+            for (Pedido p : lstMesas.getModel().getElementAt(i).getPedidos()) {
                 content += p.getDataFechamento() + ';' + p.getNumPedido() + ";" + p.getValorFinal() + ";" + p.isFlagFechamento() + ":" + "\n";
             }
-             
+
         }
         StringBuilder resultado = new StringBuilder();
         stgHoraFechamento = horaPedidoFechado.toString();
